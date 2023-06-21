@@ -60,8 +60,45 @@ const getAllUsers = async (req, res) => {
     }
 }
 
-const loginUser = () => {
-    
+const loginUser = async (req, res) => {
+    try {
+        const {email, password} = req.body;
+        if (!email || !password) {
+            return res.status(401).send({
+                success : false,
+                message : 'Please provide email or password'
+            })
+        }
+
+        const user = await userModel.findOne({email});
+        if(!user){
+            return res.status(200).send({
+                success: false,
+                message : "email is not registered"
+            })
+        }
+
+        const isMatch = await  bcrypt.compare(password, user.password);
+        if(!isMatch) {
+            return res.status(401).send({
+                success: false,
+                message : "Invalid username or password"
+            })
+        }
+
+        return res.status(200).send({
+            success: true, 
+            message: "login successful",
+            user,
+        })
+    } catch (e) {
+        console.log (e);
+        return res.status(500).send({
+            success : false,
+            message : "error in login callback",
+            e
+        })
+    }
 }
 
 module.exports = {getAllUsers, registerUser, loginUser};
