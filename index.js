@@ -4,8 +4,9 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
+//routes
 const userRoutes = require('./routes/userRoutes');
-
+const blogRoutes = require('./routes/blogRoutes');
 
 
 //config
@@ -26,6 +27,7 @@ app.use(morgan('dev'));
 
 //routes
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/blog', blogRoutes);
 
 
 
