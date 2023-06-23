@@ -123,7 +123,7 @@ exports.updateBlog = async (req, res) => {
 //delete a blog
 exports.deleteBlog = async (req, res) => {
     try {
-        const blog = await blogModel.findOneAndDelete(req.params.id).populate('user');
+        const blog = await blogModel.findOneAndDelete(req.params._id).populate('user');
         await blog.user.blogs.pull(blog);
         await blog.user.save();
         return res.status(200).send({
@@ -135,6 +135,32 @@ exports.deleteBlog = async (req, res) => {
         return res.status(400).send({
             success : false,
             message : "Error deleting blog",
+            e
+        });
+    }
+}
+
+//get user blog
+exports.userBlog = async(req, res) => {
+    try {
+        const userBlog = await userModel.findById(req.params.id).populate("blogs");
+        if (!userBlog) {
+            return res.status(404).send({
+                success: false,
+                message: 'blogs not found with this id'
+            })
+        }
+        return res.status(200).send({
+            success: true,
+            message: "user blogs",
+            userBlog
+        });
+
+    } catch (e) {
+        console.log(e);
+        return res.status(400).send({
+            success: false,
+            message: false,
             e
         });
     }

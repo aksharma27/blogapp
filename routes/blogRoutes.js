@@ -1,5 +1,5 @@
 const express = require('express');
-const {getAllBlogs, getBlogById, createBlog, updateBlog, deleteBlog} = require('../controllers/blogController');
+const {getAllBlogs, getBlogById, createBlog, updateBlog, deleteBlog, userBlog} = require('../controllers/blogController');
 
 
 const router = express.Router();
@@ -10,8 +10,11 @@ const router = express.Router();
 //get all blogs || GET
 router.get('/all-blog', getAllBlogs);
 
-//get single blog || GET
+//get single blog by id || GET
 router.get('/get-blog/:id', getBlogById);
+
+//get blog by single user id || GET
+router.get('/user-blog/:id', userBlog);
 
 //create blog || POST
 router.post('/create-blog', createBlog);
