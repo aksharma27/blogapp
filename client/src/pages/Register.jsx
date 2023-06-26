@@ -29,7 +29,7 @@ const Register = () => {
                 navigate('/login');
             }
         } catch (e) {
-            console.log(e)
+            console.log(e);
         }
     }
 
@@ -51,7 +51,7 @@ const Register = () => {
                         type={'text'}
                         required
                     />
-                    <TextField placeholder='emal' name='email'
+                    <TextField placeholder='email' name='email'
                         value={inputs.email}
                         onChange={handlgeChange}
                         margin='normal'
