@@ -31,6 +31,6 @@ app.use('/api/v1/blog', blogRoutes);
 
 
 
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT || 4000, ()=>{
     console.log(`Server listening on ${process.env.DEV_MODE} port ` + process.env.PORT);
 })
