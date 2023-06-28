@@ -26,7 +26,7 @@ const Login = () => {
         e.preventDefault()
         // console.log(inputs);
         try {
-            const { data } = await axios.post('/api/v1/users/login', { email: inputs.email, password: inputs.password })
+            const { data } = await axios.post('https://blogapp-ri60.onrender.com/api/v1/users/login', { email: inputs.email, password: inputs.password })
             if (data.success) {
                 localStorage.setItem('userId', data?.user._id);
                 dispatch(authActions.login());

@@ -23,7 +23,7 @@ const Register = () => {
         e.preventDefault()
         // console.log(inputs);
         try {
-            const { data } = await axios.post('/api/v1/users/register', { username: inputs.name, email: inputs.email, password: inputs.password })
+            const { data } = await axios.post('https://blogapp-ri60.onrender.com/api/v1/users/register', { username: inputs.name, email: inputs.email, password: inputs.password })
             if (data.success) {
                 alert('User registration successful')
                 navigate('/login');
