@@ -1,7 +1,7 @@
 ### MERN BLOG APP
 
 ### Live Link :
-[https://myblog-me.netlify.app/login] {blog app}
+[https://myblog-me.netlify.app/] {blog app}
 
 
 
