@@ -50,7 +50,7 @@ const Login = () => {
                         Login
                     </Typography>
 
-                    <TextField placeholder='emal' name='email'
+                    <TextField placeholder='email' name='email'
                         value={inputs.email}
                         onChange={handlgeChange}
                         margin='normal'

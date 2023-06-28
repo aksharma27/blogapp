@@ -41,11 +41,11 @@ export default function BlogCard({ title, description, image, username, time }) 
                         {username}
                     </Avatar>
                 }
-                action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                    </IconButton>
-                }
+                // action={
+                //     <IconButton aria-label="settings">
+                //         <MoreVertIcon />
+                //     </IconButton>
+                // }
                 title={username}
                 subheader={time}
             />
@@ -56,8 +56,12 @@ export default function BlogCard({ title, description, image, username, time }) 
                 alt="Paella dish"
             />
             <CardContent>
+                <Typography variant="h6" color="text.secondary">
+                    Title : {title}
+                </Typography>
+                {/* <CardContent> */}
                 <Typography variant="body2" color="text.secondary">
-                    {description}
+                    Description : {description}
                 </Typography>
             </CardContent>
             {/* <CardActions disableSpacing>

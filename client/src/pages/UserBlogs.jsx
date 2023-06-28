@@ -4,7 +4,7 @@ import BlogCard from '../components/BlogCard';
 
 const UserBlogs = () => {
 
-    const { blog, setBlogs } = useState([]);
+    const [blogs, setBlogs] = useState([]);
 
     const getUserBlogs = async () => {
         try {
@@ -20,21 +20,27 @@ const UserBlogs = () => {
 
     useEffect(() => {
         getUserBlogs();
-    }, [])
+    }, []);
 
     return (
         <div>
-            {blog?.map((blog) => {
-                <BlogCard
-                    title={blog.title}
-                    description={blog.description}
-                    image={blog.image}
-                    username={blog.username}
-                    time={blog.createdAt}
-                />
-            })}
+            {blogs && blogs.length > 0 ? (
+                blogs.map((blog) => {
+                    <BlogCard
+                        id={blog._id}
+                        isUser={true}
+                        title={blog.title}
+                        description={blog.description}
+                        image={blog.image}
+                        username={blog.username}
+                        time={blog.createdAt}
+                    />
+                })
+            ) : (
+                <h1>You haven't created a blog yet</h1>
+            )}
         </div>
     )
 }
 
-export default UserBlogs
+export default UserBlogs;
